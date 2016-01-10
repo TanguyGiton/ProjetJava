@@ -17,16 +17,20 @@ package fr.jeujava;
  */
 public class piece { 
     // Règle generale pour toute les pièces.
-    public piece() {
         
     
-        protected int x = 4;
-        protected int y = 0; 
-        protected int rotateID = 0;
-        protected String colour;
-        protected int tab[];
+        protected int x = 4;  // horizontale
+        protected int y = 0;  // verticale
+        protected int rotateID = 0; 
+        protected String colour; // couleur
+        protected int tab[];  // forme de la piece
+        protected int nbrCol; //Pour savoir combien de colonne il fait
+        protected int nbrlig; //Pour savoir combien de ligne il fait
     
     
+    public void randomPiece() {
+        
+        
     }
 }
 
