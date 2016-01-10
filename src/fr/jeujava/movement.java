@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package piece;
+package fr.jeujava;
 
 /**
  *
  * @author gen
  */
-public class pieceZ {
+public class movement {
     
 }

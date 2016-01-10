@@ -1,10 +1,37 @@
 package fr.jeujava;
+import javax.swing.JFrame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JPanel;
 
 /**
- * Created by tangu on 30/12/2015.
+ *
+ * @author gen
  */
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world !");
+
+    
+    
+    /**
+     *  USE A FUCKING JPANEL GRID IHEB YOU DIPSHIT 
+     */
+    public static void main(String[] args) throws InterruptedException {
+        JFrame frame = new JFrame("Tetris - ESIEA");
+        board game = new board();
+        frame.add(game);
+        frame.setSize(400, 600);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        while (board.x < 400) {
+            game.moveBall();
+            game.repaint();
+            Thread.sleep(10);  
+            
+            if (board.x > 400) {
+                System.out.println("test 1 complete.");
+            }
+        }
     }
 }
