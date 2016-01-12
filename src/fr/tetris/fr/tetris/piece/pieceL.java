@@ -3,40 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.jeujava;
+package fr.tetris.fr.tetris.piece;
 
 /**
  *
  * @author gen
  */
-public class pieceS extends piece {
+public class pieceL extends piece{
     
-    public pieceS() {
-        
+    public pieceL(){
+  
         int [][] tab = {
             {
-                3,  3,  0,  0,
-                0,  3,  3,  0,
+                0,  0,  5,  0,
+                5,  5,  5,  0,
                 0,  0,  0,  0,
                 0,  0,  0,  0,
             },
             {
-                0,  0,  3,  0,
-                0,  3,  3,  0,
-                0,  3,  0,  0,
-                0,  0,  0,  0,
+                0,  5,  0,  0,
+                0,  5,  0,  0, 
+                0,  5,  5,  0,
             },
             {
                 0,  0,  0,  0,
-                3,  3,  0,  0,
-                0,  3,  3,  0,
+                5,  5,  5,  0,
+                5,  0,  0,  0,
                 0,  0,  0,  0,
             },
             {
-                0,  3,  0,  0,
-                3,  3,  0,  0,
-                3,  0,  0,  0,
+                5,  5,  0,  0,
+                0,  5,  0,  0,
+                0,  5,  0,  0,
             }
+
         };
-    } 
+    }
 }

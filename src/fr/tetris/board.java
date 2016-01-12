@@ -1,9 +1,7 @@
-package fr.jeujava;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+package fr.tetris;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
