@@ -1,4 +1,5 @@
 package fr.tetris;
+import javax.swing.*;
 
 /**
  *
@@ -6,30 +7,20 @@ package fr.tetris;
  */
 public class Main {
 
-    
-    
-    /**
-     *  USE A FUCKING JPANEL GRID IHEB YOU DIPSHIT 
-     */
-    public static void main(String[] args) throws InterruptedException {
-    /*    JFrame frame = new JFrame("Tetris - ESIEA");
-        board game = new board();
-        frame.add(game);
-        frame.setSize(400, 600);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public static void main(String[] args) {
+        board board =new board();
 
-        while (board.x < 400) {
-            game.moveBall();
-            game.repaint();
-            Thread.sleep(10);  
-            
-            if (board.x > 400) {
-                System.out.println("test 1 complete.");
-            }
-        } */
-        
-        
-  
+        JFrame f = new JFrame("Tetris");
+        f.add(board.getGui());
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setLocationByPlatform(true);
+
+        // ensures the frame is the minimum size it needs to be
+        // in order display the components within it
+        f.pack();
+
+        // ensures the minimum size is enforced.
+        f.setMinimumSize(f.getSize());
+        f.setVisible(true);
     } 
 }

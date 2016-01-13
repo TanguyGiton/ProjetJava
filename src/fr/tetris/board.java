@@ -1,44 +1,55 @@
 package fr.tetris;
-
-import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.swing.*;
+import javax.swing.border.*;
 
-/**
- *
- * @author gen
- */
-public class board extends JPanel {
-    
-    public static int[][] wallArray = new int[800][600];
+public class board {
 
-    public static int x = 0;
-    int y = 0;
-    public void moveBall() {
-        x = x + 1;
-        y = y + 1;
+    private final JPanel gui = new JPanel(new BorderLayout(1, 1));
+    private JButton[][] boardSquares = new JButton[12][20]; // Les Carré
+    private JPanel board; //
+
+    board() {
+        initializeGui();
     }
-    
-    
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-        RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.fillOval(x, y, 30, 30);
-        
-        /*
-        for (int i = 0; i<wallArray.length; i++) {
-            for (int j = 0; j<wallArray[0].length; j++){
-                //do something for every field in the array
-                //setColor(Color.getColor(wallArray[i][j], 50, 50)); 
-                g.drawLine(i,j,i,j);
+
+    public final void initializeGui() {
+
+        board = new JPanel(new GridLayout(0, 12));
+        board.setBorder(new LineBorder(Color.BLACK));
+        gui.add(board);
+
+        // create the board squares
+        Insets buttonMargin = new Insets(1,1,1,1);
+        for (int ii = 0; ii < 12; ii++) {
+            for (int jj = 0; jj < 20; jj++) {
+                JButton b = new JButton();
+                b.setMargin(buttonMargin);
+                ImageIcon icon = new ImageIcon(
+
+                        new BufferedImage(20, 20, BufferedImage.TYPE_INT_ARGB)); // Taille des Pièces
+                b.setIcon(icon);
+                b.setBackground(Color.BLACK);
+                boardSquares[ii][jj] = b;
             }
-        }*/
+        }
+
+        // fill squares
+        for (int ii = 0; ii < 12; ii++) {
+            for (int jj = 0; jj < 20; jj++) {
+
+                board.add(boardSquares[ii][jj]);
+            }
+        }
     }
-    
-    
-    public void drawBoard() {
-        
+
+/*
+    public final JComponent getboard() {
+        return board;
+    }
+*/
+    public final JComponent getGui() {
+        return gui;
     }
 }
