@@ -6,37 +6,20 @@
 package fr.tetris.piece;
 
 /**
- *
- * @author gen
+ * La pièce Z
  */
 public class PieceZ extends Piece {
-    
+
+    /**
+     * Constructeur de la Pièce Z
+     */
     public PieceZ() {
-        
-        int [][] tab = {
-            {
-                3,  3,  0,  0,
-                0,  3,  3,  0,
-                0,  0,  0,  0,
-                0,  0,  0,  0,
-            },
-            {
-                3,  0,  0,  0,
-                3,  3,  0,  0,
-                0,  3,  0,  0,
-                0,  0,  0,  0,
-            },
-            {
-                0,  0,  0,  0,
-                0,  3,  3,  0,
-                3,  3,  0,  0,
-                0,  0,  0,  0,
-            },
-            {
-                3,  0,  0,  0,
-                3,  3,  0,  0,
-                0,  3,  0,  0,
-            }
+
+        super();
+
+        this.piece = new boolean[][]{
+                {true, true, false},
+                {false, true, true}
         };
     } 
 }

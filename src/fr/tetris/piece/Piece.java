@@ -1,26 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.tetris.piece;
 
-public class Piece {
-    // Règle generale pour toute les pièces.
-        
-    
-        protected int x = 4;  // horizontale
-        protected int y = 0;  // verticale
-    protected int rotateID = 0;
-        protected String colour; // couleur
-        protected int tab[];  // forme de la piece
-        protected int nbrCol; //Pour savoir combien de colonne il fait
-        protected int nbrlig; //Pour savoir combien de ligne il fait
-    
-    
-    public void randomPiece() {
-        
-        
+/**
+ * Classe abstraite de laquelle toutes les pièces héritent.
+ */
+public abstract class Piece {
+
+    /**
+     * La ligne sur laquelle la pièce est positionnée
+     */
+    protected int lin;
+
+    /**
+     * La colonne sur laquelle la pièce est positionnée
+     */
+    protected int col;
+
+    /**
+     * La matrice représentant la pièce
+     */
+    protected boolean[][] piece;
+
+    /**
+     * Constructeur d'une pièce
+     */
+    public Piece() {
+        this.lin = 0;
+        this.col = 0;
+    }
+
+    /**
+     * Fait une rotation sur la pièce
+     */
+    public void rotate() {
+        // TODO: Faire la méthode rotate
+    }
+
+    /**
+     * La colonne sur laquelle la piece est positionnée
+     *
+     * @return La colonne
+     */
+    public int getCol() {
+        return col;
+    }
+
+    /**
+     * La ligne sur laquelle la pièce est positionnée
+     *
+     * @return La ligne
+     */
+    public int getLin() {
+        return lin;
     }
 }
 

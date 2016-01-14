@@ -6,40 +6,21 @@
 package fr.tetris.piece;
 
 /**
- *
- * @author gen
+ * La pièce J
  */
 public class PieceJ extends Piece {
-    
-    public PieceJ() {
-        
-        int [][] tab = {
-            {
-                0,  4,  0,  0,
-                0,  4,  0,  0,
-                4,  4,  0,  0,
-                0,  0,  0,  0,
-            },
-            {
-                0,  4,  0,  0,
-                0,  4,  4,  4,
-                0,  0,  0,  0,
-                0,  0,  0,  0,
-            },
-            {
-                0,  4,  4,  0,
-                0,  4,  0,  0,
-                0,  4,  0,  0,
-                0,  0,  0,  0,
-            },
-            {
-                0,  4,  4,  4,
-                0,  0,  0,  4,
-                0,  0,  0,  0,
-                0,  0,  0,  0,
 
-            }
+    /**
+     * Constructeur de la pièce J
+     */
+    public PieceJ() {
+
+        super();
+
+        this.piece = new boolean[][]{
+                {true, false, false, false},
+                {true, true, true, true}
         };
-    
+
     }
 }
