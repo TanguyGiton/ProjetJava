@@ -17,9 +17,9 @@ public class PieceL extends Piece {
 
         super();
 
-        this.piece = new boolean[][]{
+        this.setPiece(new boolean[][]{
                 {false, false, false, true},
                 {true, true, true, true}
-        };
+        });
     }
 }

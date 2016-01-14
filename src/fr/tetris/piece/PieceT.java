@@ -17,10 +17,10 @@ public class PieceT extends Piece {
 
         super();
 
-        this.piece = new boolean[][]{
+        this.setPiece(new boolean[][]{
                 {false, true, false},
                 {true, true, true}
-        };
+        });
     }
     
 }

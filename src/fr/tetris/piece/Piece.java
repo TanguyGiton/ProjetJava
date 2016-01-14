@@ -16,6 +16,16 @@ public abstract class Piece {
     protected int col;
 
     /**
+     * Le nombre de ligne que fait la pièce
+     */
+    protected int nbLin;
+
+    /**
+     * Le nombre de colonne que fait la pièce
+     */
+    protected int nbCol;
+
+    /**
      * La matrice représentant la pièce
      */
     protected boolean[][] piece;
@@ -51,6 +61,17 @@ public abstract class Piece {
      */
     public int getLin() {
         return lin;
+    }
+
+    /**
+     * Initialise la matrice de la pièce
+     *
+     * @param piece la matrice de la piece
+     */
+    protected void setPiece(boolean[][] piece) {
+        this.piece = piece;
+
+        // TODO: Définir le nombre de ligne et le nombre de colonne
     }
 }
 
