@@ -28,7 +28,7 @@ public abstract class Piece {
     /**
      * La matrice représentant la pièce
      */
-    protected boolean[][] piece;
+    private boolean[][] piece;
 
     /**
      * Constructeur d'une pièce
@@ -36,6 +36,36 @@ public abstract class Piece {
     public Piece() {
         this.lin = 0;
         this.col = 0;
+    }
+
+    /**
+     * Initialise la matrice de la pièce
+     *
+     * @param piece la matrice de la piece
+     */
+    protected void setPiece(boolean[][] piece) {
+        this.piece = piece.clone();
+
+        this.nbLin = this.piece.length;
+        this.nbCol = this.piece[0].length;
+    }
+
+
+    /**
+     * Affiche la piece dans la console
+     */
+    public void printConsole() {
+        int lin, col;
+
+        for (lin = 0; lin < this.nbLin; lin++) {
+            for (col = 0; col < this.nbCol; col++) {
+                System.out.print(this.piece[lin][col]);
+                System.out.print(' ');
+            }
+            System.out.println();
+        }
+
+        System.out.println();
     }
 
     /**
@@ -74,31 +104,21 @@ public abstract class Piece {
     }
 
     /**
-     * Initialise la matrice de la pièce
-     *
-     * @param piece la matrice de la piece
+     * Nombre de lignes de la pièce (largeur de la pièce)
+     * @return le nombre de lignes
      */
-    protected void setPiece(boolean[][] piece) {
-        this.piece = piece.clone();
-
-        this.nbLin = this.piece.length;
-        this.nbCol = this.piece[0].length;
+    public int getNbLin() {
+        return nbLin;
     }
 
     /**
-     * Affiche la piece dans la console
+     * Nombre de colonnes de la pièce
+     * @return le nombre de colonnes
      */
-    public void printConsole() {
-        int lin, col;
-
-        for (lin = 0; lin < this.nbLin; lin++) {
-            for (col = 0; col < this.nbCol; col++) {
-                System.out.print(this.piece[lin][col]);
-                System.out.print(' ');
-            }
-            System.out.println();
-        }
+    public int getNbCol() {
+        return nbCol;
     }
+
 }
 
 
