@@ -2,14 +2,11 @@ package fr.tetris;
 import javax.swing.*;
 
 
-/**
- * The base of the Gui. Composants are inside here.
- * Created by gen on 14/01/16.
- */
+
 public class Tetris extends JFrame {
 
-    static int lin = 600;
-    static int col = 600;
+    public static int FRAME_WIDTH = 600;
+    public static int FRAME_HEIGHT = 600;
 
 
     public Tetris() {
@@ -19,9 +16,9 @@ public class Tetris extends JFrame {
         this.setTitle("Tetris");
         this.setLayout(null);
         this.setVisible(true);
-        this.setSize(lin, col);
+        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
 
 

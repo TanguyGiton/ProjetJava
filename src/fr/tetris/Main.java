@@ -1,13 +1,16 @@
 package fr.tetris;
 
-import javax.swing.*;
 
 /**
- *
- * @author gen
+ * La classe principale utilisée pour lancer le Tetris
  */
 public class Main {
 
+    /**
+     * La méthode qui est lancée en première
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         Tetris Tetris = new Tetris();

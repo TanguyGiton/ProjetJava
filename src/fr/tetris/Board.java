@@ -1,28 +1,37 @@
 package fr.tetris;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 
 public class Board extends JPanel {
-    static int col = 12;
-    static int lig = 20;
 
+    /**
+     * Le nombre de colonnes de la grille
+     */
+    public static final int NB_COL = 12;
+
+    /**
+     * Le nombre de lignes de la grille
+     */
+    public static final int NB_LIN = 20;
+
+
+    /**
+     * Le constructeur de la grille
+     * <p>
+     * Défini le JPanel et l'affiche
+     */
     public Board() {
 
+        this.setSize(NB_LIN, NB_COL);
         this.setVisible(true);
-        this.setSize(lig, col);
 
-        for (int i = 0; i < lig; i++) {
-            for (int j = 0; j < col; j++) {
+        for (int i = 0; i < NB_LIN; i++) {
+            for (int j = 0; j < NB_COL; j++) {
 
                 // :TODO Squares for the Board
-                //g.drawRect(col, lig, 20, 20);
+                //g.drawRect(NB_COL, NB_LIN, 20, 20);
             }
         }
-
 
     }
 }

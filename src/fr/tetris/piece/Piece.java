@@ -119,6 +119,17 @@ public abstract class Piece {
         return nbCol;
     }
 
+    /**
+     * Définir la position de la pièce
+     *
+     * @param lin la ligne
+     * @param col la colonne
+     */
+    public void setPosition(int lin, int col) {
+        this.lin = lin;
+        this.col = col;
+    }
+
 }
 
 
