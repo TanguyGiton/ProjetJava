@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.tetris.fr.tetris.piece;
+package fr.tetris.piece;
 
 /**
  *
  * @author gen
  */
-public class pieceJ extends piece{
+public class PieceJ extends Piece {
     
-    public pieceJ() { 
+    public PieceJ() {
         
         int [][] tab = {
             {

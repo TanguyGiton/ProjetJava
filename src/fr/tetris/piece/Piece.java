@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.tetris.fr.tetris.piece;
+package fr.tetris.piece;
 
-public class piece {
+public class Piece {
     // Règle generale pour toute les pièces.
         
     
