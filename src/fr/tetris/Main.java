@@ -1,4 +1,5 @@
 package fr.tetris;
+
 import javax.swing.*;
 
 /**
@@ -8,7 +9,7 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        board board =new board();
+        Board board = new Board();
 
         JFrame f = new JFrame("Tetris");
         f.add(board.getGui());

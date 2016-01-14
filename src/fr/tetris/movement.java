@@ -9,6 +9,6 @@ package fr.tetris;
  *
  * @author gen
  */
-public class movement {
+public class Movement {
     
 }

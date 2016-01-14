@@ -1,16 +1,17 @@
 package fr.tetris;
+
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.swing.*;
-import javax.swing.border.*;
 
-public class board {
+public class Board {
 
     private final JPanel gui = new JPanel(new BorderLayout(1, 1));
     private JButton[][] boardSquares = new JButton[12][20]; // Les Carré
     private JPanel board; //
 
-    board() {
+    Board() {
         initializeGui();
     }
 
@@ -20,7 +21,7 @@ public class board {
         board.setBorder(new LineBorder(Color.BLACK));
         gui.add(board);
 
-        // create the board squares
+        // create the Board squares
         Insets buttonMargin = new Insets(1,1,1,1);
         for (int ii = 0; ii < 12; ii++) {
             for (int jj = 0; jj < 20; jj++) {
@@ -46,7 +47,7 @@ public class board {
 
 /*
     public final JComponent getboard() {
-        return board;
+        return Board;
     }
 */
     public final JComponent getGui() {
