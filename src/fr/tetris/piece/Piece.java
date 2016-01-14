@@ -42,7 +42,17 @@ public abstract class Piece {
      * Fait une rotation sur la pièce
      */
     public void rotate() {
-        // TODO: Faire la méthode rotate
+        int lin, col;
+
+        boolean temp[][] = new boolean[nbCol][nbLin];
+
+        for (lin = 0; lin < this.nbLin; lin++) {
+            for (col = 0; col < this.nbCol; col++) {
+                temp[col][(nbLin - 1) - lin] = this.piece[lin][col];
+            }
+        }
+
+        this.setPiece(temp);
     }
 
     /**
@@ -69,9 +79,25 @@ public abstract class Piece {
      * @param piece la matrice de la piece
      */
     protected void setPiece(boolean[][] piece) {
-        this.piece = piece;
+        this.piece = piece.clone();
 
-        // TODO: Définir le nombre de ligne et le nombre de colonne
+        this.nbLin = this.piece.length;
+        this.nbCol = this.piece[0].length;
+    }
+
+    /**
+     * Affiche la piece dans la console
+     */
+    public void printConsole() {
+        int lin, col;
+
+        for (lin = 0; lin < this.nbLin; lin++) {
+            for (col = 0; col < this.nbCol; col++) {
+                System.out.print(this.piece[lin][col]);
+                System.out.print(' ');
+            }
+            System.out.println();
+        }
     }
 }
 
