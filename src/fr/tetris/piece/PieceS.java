@@ -5,6 +5,8 @@
  */
 package fr.tetris.piece;
 
+import java.awt.*;
+
 /**
  * La pièce S
  */
@@ -21,5 +23,7 @@ public class PieceS extends Piece {
                 {false, true, true},
                 {true, true, false}
         });
+
+        this.setColor(new Color(4, 228, 255));
     } 
 }

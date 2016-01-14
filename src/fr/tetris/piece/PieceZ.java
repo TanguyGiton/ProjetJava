@@ -5,6 +5,8 @@
  */
 package fr.tetris.piece;
 
+import java.awt.*;
+
 /**
  * La pièce Z
  */
@@ -21,5 +23,7 @@ public class PieceZ extends Piece {
                 {true, true, false},
                 {false, true, true}
         });
+
+        this.setColor(new Color(199, 4, 255));
     } 
 }

@@ -1,5 +1,7 @@
 package fr.tetris.piece;
 
+import java.awt.*;
+
 /**
  *  La piece I
  */
@@ -15,6 +17,8 @@ public class PieceI extends Piece {
         this.setPiece(new boolean[][]{
                 {true, true, true, true}
         });
+
+        this.setColor(new Color(255, 4, 4));
     
     }
 }

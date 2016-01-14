@@ -1,5 +1,7 @@
 package fr.tetris.piece;
 
+import java.awt.*;
+
 /**
  * Classe abstraite de laquelle toutes les pièces héritent.
  */
@@ -24,7 +26,10 @@ public abstract class Piece {
      * Le nombre de colonne que fait la pièce
      */
     protected int nbCol;
-
+    /**
+     * La couleur de la pièce
+     */
+    protected Color color;
     /**
      * La matrice représentant la pièce
      */
@@ -44,7 +49,7 @@ public abstract class Piece {
      * @param piece la matrice de la piece
      */
     protected void setPiece(boolean[][] piece) {
-        this.piece = piece.clone();
+        this.piece = piece;
 
         this.nbLin = this.piece.length;
         this.nbCol = this.piece[0].length;
@@ -130,6 +135,23 @@ public abstract class Piece {
         this.col = col;
     }
 
+    /**
+     * Retourner l'objet Color de la pièce représentant sa couleur
+     *
+     * @return l'objet Color de la pièce
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * Définir la couleur de la pièce avec un objet Color
+     *
+     * @param color un objet Color représentant la couleur de la pièce
+     */
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }
 
 
