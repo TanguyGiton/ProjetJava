@@ -56,8 +56,8 @@ public class SideBar extends JPanel {
      * Le constructeur de la barre d'information.
      */
     public SideBar() {
-        this.setBackground(Color.blue);
-        //this.add(new JButton("SideBar")); Fais buguer le key listener
+        this.setBackground(Color.black);
+        setPreferredSize(new Dimension(200, (Board.COTE_CARREAU + 2 * Board.MARGE_CARREAU) * Board.NB_LIN));
         this.setVisible(true);
     }
 
