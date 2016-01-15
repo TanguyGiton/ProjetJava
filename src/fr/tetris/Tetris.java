@@ -9,7 +9,7 @@ import java.awt.*;
 public class Tetris extends JFrame {
 
     /**
-     * Le JPanel Board
+     * Le JPanel board
      */
     private Board board;
 
@@ -32,6 +32,7 @@ public class Tetris extends JFrame {
 
         // JFrame Config (Visible, size, screen positioning)
         this.setTitle("Tetris");
+        this.getContentPane().setBackground( Color.BLACK);
         this.setLayout(new BorderLayout());
 
         this.setLocationRelativeTo(null);
