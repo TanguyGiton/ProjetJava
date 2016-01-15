@@ -12,6 +12,5 @@ public class Main {
 
         Tetris tetris = new Tetris();
 
-
     } 
 }

@@ -62,8 +62,6 @@ public class Board extends JPanel {
                 square.setEnabled(false);
 
                 square.setMargin(buttonMargin);
-
-                square.setMargin(buttonMargin);
                 square.setIcon(icon);
                 square.setBackground(Color.BLACK);
 

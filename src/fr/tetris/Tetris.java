@@ -14,9 +14,9 @@ public class Tetris extends JFrame {
     private Board board;
 
     /**
-     * Le Jpanel SideBoard
+     * Le Jpanel SideBar
      */
-    private SideBoard sideBoard;
+    private SideBar sideBar;
 
     /**
      * La pièce en cours
@@ -48,10 +48,10 @@ public class Tetris extends JFrame {
         this.getContentPane().add(this.board, BorderLayout.CENTER);
 
         /**
-         * Création et implémentation du SideBoard (JPanel) dans le Tetris (JFrame)
+         * Création et implémentation du SideBar (JPanel) dans le Tetris (JFrame)
          */
-        this.sideBoard = new SideBoard();
-        this.getContentPane().add(this.sideBoard, BorderLayout.EAST);
+        this.sideBar = new SideBar();
+        this.getContentPane().add(this.sideBar, BorderLayout.EAST);
 
 
         /**
