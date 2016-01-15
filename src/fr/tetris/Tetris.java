@@ -34,7 +34,6 @@ public class Tetris extends JFrame {
         this.setTitle("Tetris");
         this.setLayout(new BorderLayout());
 
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,11 +50,12 @@ public class Tetris extends JFrame {
         this.getContentPane().add(new JButton("SideBoard"), BorderLayout.EAST);
         // TODO: Ajouter vraiment le SideBoard
 
+
         /**
          * On affiche le Tetris
          */
-
         this.pack();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
     }
