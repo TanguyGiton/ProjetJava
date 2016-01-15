@@ -111,7 +111,7 @@ public class SideBar extends JPanel {
         g.drawString("D or RIGHT - Right", LEFT_TEXT - 40, cursorTop += INTER_LIN);
         g.drawString("Z or UP - Rotate", LEFT_TEXT - 40, cursorTop += INTER_LIN);
         g.drawString("S or DOWN - Drop", LEFT_TEXT - 40, cursorTop += INTER_LIN);
-        g.drawString("P - Pause", LEFT_TEXT - 40, cursorTop += INTER_LIN);
+        g.drawString("P - Play or Pause", LEFT_TEXT - 40, cursorTop += INTER_LIN);
 
 
         /**
@@ -120,8 +120,11 @@ public class SideBar extends JPanel {
 
         if (tetris.isGameOver()) {
             g.setFont(TITLES_FONT);
-            g.drawString("GAME OVER", 35, cursorTop = TOP_NEXT);
-            g.drawString("ENTER TO CONTINUE", 10, cursorTop += INTER_LIN * 2);
+            g.drawString("GAME OVER", 35, cursorTop = TOP_NEXT-10);
+            g.drawString("PRESS ENTER", 32, cursorTop += INTER_LIN * 3);
+            g.drawString("TO CONTINUE", 32, cursorTop += INTER_LIN);
+
+
         } else {
             g.setFont(TITLES_FONT);
             g.drawString("NEXT", LEFT_TITLES - 18, TOP_NEXT);
