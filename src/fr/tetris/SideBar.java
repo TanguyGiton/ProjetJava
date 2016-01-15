@@ -124,7 +124,7 @@ public class SideBar extends JPanel {
             for (int col = 0; col < next.getNbCol(); col++) {
                 if (next.isASquare(lin + next.getLin(), col + next.getCol())) {
                     g.setColor(next.getColor());
-                    g.fillRect(lin * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbLin() / 2 * Board.COTE_CARREAU)), col * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
+                    g.fillRect(col * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbCol() / 2 * Board.COTE_CARREAU)), lin * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
                 }
             }
         }
