@@ -34,12 +34,17 @@ public class Tetris extends JFrame {
     /**
      * La vitesse du jeu
      */
-    private int speed = 800;
+    private int speed;
 
     /**
      * Indiquer si le jeu est fini
      */
     private boolean gameOver;
+
+    /**
+     * Indiquer si le jeu est en pause
+     */
+    private boolean pause;
 
     /**
      * Le score
@@ -85,13 +90,15 @@ public class Tetris extends JFrame {
                      */
                     case KeyEvent.VK_Z:
                     case KeyEvent.VK_UP:
-                        currentPiece.rotate();
-                        if (board.verifCollision(currentPiece)) {
+                        if (!isPause()) {
                             currentPiece.rotate();
-                            currentPiece.rotate();
-                            currentPiece.rotate();
-                        } else {
-                            updatePrint();
+                            if (board.verifCollision(currentPiece)) {
+                                currentPiece.rotate();
+                                currentPiece.rotate();
+                                currentPiece.rotate();
+                            } else {
+                                updatePrint();
+                            }
                         }
                         break;
 
@@ -100,11 +107,13 @@ public class Tetris extends JFrame {
                      */
                     case KeyEvent.VK_Q:
                     case KeyEvent.VK_LEFT:
-                        currentPiece.moveLeft();
-                        if (board.verifCollision(currentPiece)) {
-                            currentPiece.moveRight();
-                        } else {
-                            updatePrint();
+                        if (!isPause()) {
+                            currentPiece.moveLeft();
+                            if (board.verifCollision(currentPiece)) {
+                                currentPiece.moveRight();
+                            } else {
+                                updatePrint();
+                            }
                         }
                         break;
 
@@ -113,17 +122,29 @@ public class Tetris extends JFrame {
                      */
                     case KeyEvent.VK_D:
                     case KeyEvent.VK_RIGHT:
-                        currentPiece.moveRight();
-                        if (board.verifCollision(currentPiece)) {
-                            currentPiece.moveLeft();
-                        } else {
-                            updatePrint();
+                        if (!isPause()) {
+                            currentPiece.moveRight();
+                            if (board.verifCollision(currentPiece)) {
+                                currentPiece.moveLeft();
+                            } else {
+                                updatePrint();
+                            }
                         }
                         break;
 
                     case KeyEvent.VK_S:
                     case KeyEvent.VK_DOWN:
                         run();
+                        break;
+
+                    case KeyEvent.VK_ENTER:
+                        if (isGameOver()) {
+                            initGame();
+                        }
+                        break;
+
+                    case KeyEvent.VK_P:
+                        setPause(!isPause());
                         break;
 
                 }
@@ -143,18 +164,23 @@ public class Tetris extends JFrame {
          */
 
         this.initGame();
+        this.loop();
     }
 
     /**
      * Lancer le jeu
      */
     private void run() {
-        this.currentPiece.moveDown();
+        if (!isPause()) {
+            this.currentPiece.moveDown();
 
-        if (this.board.verifCollision(this.currentPiece)) {
-            this.currentPiece.cancelMoveDown();
-            this.changePiece();
+            if (this.board.verifCollision(this.currentPiece)) {
+                this.currentPiece.cancelMoveDown();
+                this.changePiece();
+            }
+
         }
+
         this.updatePrint();
     }
 
@@ -190,7 +216,11 @@ public class Tetris extends JFrame {
      * Mise à jour de l'affichage
      */
     private void updatePrint() {
-        this.board.print(this.currentPiece);
+        if (isGameOver() || isPause()) {
+            this.board.printPause(isGameOver());
+        } else {
+            this.board.print(this.currentPiece);
+        }
         this.board.repaint();
         this.sideBar.repaint();
     }
@@ -200,30 +230,31 @@ public class Tetris extends JFrame {
      */
     private void loop() {
 
-        while (!this.isGameOver()) {
+        while (true) {
             run();
-            this.speed--;
+            if (!isPause()) {
+                this.speed--;
+            }
             try {
                 Thread.sleep(this.speed);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
 
-        // TODO: Afficher un message de Game Over
+        }
     }
 
     /**
      * Initialisation de la partie
      */
     private void initGame() {
+        this.board.reset();
+        this.speed = 800;
         this.currentPiece = randomPiece();
         this.nextPiece = randomPiece();
         this.setGameOver(false);
         this.updatePrint();
         this.score = 0;
-
-        this.loop();
     }
 
     /**
@@ -245,13 +276,11 @@ public class Tetris extends JFrame {
                 this.score += 400;
                 break;
         }
-        // TODO: Afficher le score dans la SideBar
         this.currentPiece = this.nextPiece;
         if (this.board.verifCollision(this.currentPiece)) {
             setGameOver(true);
         } else {
             this.nextPiece = this.randomPiece();
-            // TODO: Afficher la prochaine pièce dans la SideBar
         }
     }
 
@@ -271,6 +300,24 @@ public class Tetris extends JFrame {
      */
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    /**
+     * Indique si la partie est en pause
+     *
+     * @return Vrai si la partie est en pause, Faux sinon
+     */
+    public boolean isPause() {
+        return pause;
+    }
+
+    /**
+     * Définir si la partie est en pause
+     *
+     * @param pause Vrai si la partie est en pause, Faux sinon
+     */
+    public void setPause(boolean pause) {
+        this.pause = pause;
     }
 
     /**

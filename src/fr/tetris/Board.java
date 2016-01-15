@@ -156,6 +156,41 @@ public class Board extends JPanel {
     }
 
     /**
+     * Affichage du mode pause
+     *
+     * @param gameover Vaut vrai si c'est Game Over
+     */
+    public void printPause(boolean gameover) {
+        reinit();
+
+        for (int i = 0; i < 4; i++) {
+            boardSquares[3 + i][3].setBackground(Color.white);
+            boardSquares[3 + i][4].setBackground(Color.white);
+            boardSquares[3 + i][7].setBackground(Color.white);
+            boardSquares[3 + i][8].setBackground(Color.white);
+        }
+
+        if (gameover) {
+            boardSquares[11][2].setBackground(Color.white);
+            boardSquares[10][2].setBackground(Color.white);
+            boardSquares[10][3].setBackground(Color.white);
+            boardSquares[9][3].setBackground(Color.white);
+            boardSquares[8][4].setBackground(Color.white);
+            boardSquares[9][4].setBackground(Color.white);
+            boardSquares[8][5].setBackground(Color.white);
+            boardSquares[9][5].setBackground(Color.white);
+            boardSquares[8][6].setBackground(Color.white);
+            boardSquares[9][6].setBackground(Color.white);
+            boardSquares[8][7].setBackground(Color.white);
+            boardSquares[9][7].setBackground(Color.white);
+            boardSquares[9][8].setBackground(Color.white);
+            boardSquares[10][8].setBackground(Color.white);
+            boardSquares[10][9].setBackground(Color.white);
+            boardSquares[11][9].setBackground(Color.white);
+        }
+    }
+
+    /**
      * Vérifier que la piece peut être déplacer à ces coordonnées
      *
      * @param piece la pièce à vérifier
@@ -226,6 +261,17 @@ public class Board extends JPanel {
         for (int l = lin; l > 0; l--) {
             for (int c = 0; c < NB_COL; c++) {
                 boardPieces[l][c] = boardPieces[l - 1][c];
+            }
+        }
+    }
+
+    /**
+     * Reset le board
+     */
+    public void reset() {
+        for (int lin = 0; lin < NB_LIN; lin++) {
+            for (int col = 0; col < NB_COL; col++) {
+                boardPieces[lin][col] = null;
             }
         }
     }

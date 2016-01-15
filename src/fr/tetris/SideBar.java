@@ -110,6 +110,7 @@ public class SideBar extends JPanel {
         g.drawString("D or RIGHT - Right", LEFT_TEXT - 40, cursorTop += INTER_LIN);
         g.drawString("Z or UP - Rotate", LEFT_TEXT - 40, cursorTop += INTER_LIN);
         g.drawString("S or DOWN - Drop", LEFT_TEXT - 40, cursorTop += INTER_LIN);
+        g.drawString("P - Pause", LEFT_TEXT - 40, cursorTop += INTER_LIN);
 
 
         /**
@@ -124,7 +125,7 @@ public class SideBar extends JPanel {
             for (int col = 0; col < next.getNbCol(); col++) {
                 if (next.isASquare(lin + next.getLin(), col + next.getCol())) {
                     g.setColor(next.getColor());
-                    g.fillRect(col * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbCol() / 2 * Board.COTE_CARREAU)), lin * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
+                    g.fillRect(col * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbCol() * Board.COTE_CARREAU / 2)), lin * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
                 }
             }
         }
