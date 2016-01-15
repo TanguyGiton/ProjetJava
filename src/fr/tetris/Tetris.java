@@ -73,7 +73,7 @@ public class Tetris extends JFrame {
         /**
          * Création et implémentation du SideBar (JPanel) dans le Tetris (JFrame)
          */
-        this.sideBar = new SideBar();
+        this.sideBar = new SideBar(this);
         this.add(this.sideBar, BorderLayout.EAST);
 
         addKeyListener(new KeyAdapter() {
@@ -192,6 +192,7 @@ public class Tetris extends JFrame {
     private void updatePrint() {
         this.board.print(this.currentPiece);
         this.board.repaint();
+        this.sideBar.repaint();
     }
 
     /**
@@ -270,5 +271,14 @@ public class Tetris extends JFrame {
      */
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    /**
+     * Donne le score actuel
+     *
+     * @return Le score
+     */
+    public int getScore() {
+        return score;
     }
 }

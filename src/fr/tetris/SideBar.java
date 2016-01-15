@@ -49,16 +49,21 @@ public class SideBar extends JPanel {
     /**
      * La Couleur du texte
      */
-    private static final Color DRAW_COLOR = new Color(128, 192, 128);
+    private static final Color FONT_COLOR = new Color(223, 221, 214);
 
+    /**
+     * Le Tetris
+     */
+    private Tetris tetris;
 
     /**
      * Le constructeur de la barre d'information.
      */
-    public SideBar() {
+    public SideBar(Tetris tetris) {
+        this.tetris = tetris;
+
         this.setBackground(Color.black);
-        setPreferredSize(new Dimension(200, (Board.COTE_CARREAU + 2 * Board.MARGE_CARREAU) * Board.NB_LIN));
-        this.setVisible(true);
+        setPreferredSize(new Dimension(100, (Board.COTE_CARREAU + 2 * Board.MARGE_CARREAU) * Board.NB_LIN));
     }
 
     @Override
@@ -66,27 +71,21 @@ public class SideBar extends JPanel {
         super.paintComponent(g);
 
         // Mettre la couleur
-        g.setColor(DRAW_COLOR);
+        g.setColor(FONT_COLOR);
 
-        /**
-         * Une variable utilisé pour stocker les coordonnée temporairement.
-         * On pourra ré-ordonner, bouger et/ou ajouter/supprimer si besoin
-         */
         int Coor_Temp;
 
 
         /**
-         * Dessine la partie Stat
+         * Dessine la partie Score
          */
         g.setFont(LARGE_FONT);
-        g.drawString("Stats", TAB_TITRES, Coor_Temp = COL_STATS);
+        g.drawString("Score", TAB_TITRES, Coor_Temp = COL_STATS);
         g.setFont(SMALL_FONT);
-        // :TODO getScore() et l'écrire dans SideBar
-        // g.drawString("Level: " + Tetris.getLevel(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
-        // g.drawString("Score: " + Tetris.getScore(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        g.drawString("Score: " + tetris.getScore(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
 
         /**
-         * Dessine la partie controle
+         * Dessine la partie controles
          */
         g.setFont(LARGE_FONT);
         g.drawString("Controls", TAB_TITRES, Coor_Temp = COL_CONTROL);
@@ -95,7 +94,12 @@ public class SideBar extends JPanel {
         g.drawString("D/RIGHT - Right", TAB_TEXT, Coor_Temp += ENTRE_LIN);
         g.drawString("Z/UP - Rotate", TAB_TEXT, Coor_Temp += ENTRE_LIN);
         g.drawString("S/DOWN - Drop", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-        g.drawString("P - Pause Game", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+
+
+        /**
+         * Dessine l'emplacement de la pièce suivante
+         */
+
 
     }
 
