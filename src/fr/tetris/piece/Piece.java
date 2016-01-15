@@ -44,7 +44,7 @@ public abstract class Piece {
      */
     public Piece() {
         this.lin = 0;
-        this.col = 0;
+        this.col = 4;
     }
 
     /**
