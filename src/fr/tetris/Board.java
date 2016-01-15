@@ -31,7 +31,7 @@ public class Board extends JPanel {
     /**
      * La matrice qui contient les boutons (pour afficher les cases de notre Tetris).
      */
-    public JButton[][] BoardSquares = new JButton[NB_LIN][NB_COL];
+    public JButton[][] boardSquares = new JButton[NB_LIN][NB_COL];
 
     /**
      * Le constructeur de la grille
@@ -49,7 +49,7 @@ public class Board extends JPanel {
         Insets buttonMargin = new Insets(MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU);
 
         /**
-         * Créer l'icon du Tetris: les carreaux qui seront affichés sur Tetris
+         * Créer l'icon des carreaux qui seront affichés sur Tetris
          */
         ImageIcon icon = new ImageIcon(
                 new BufferedImage(COTE_CARREAU, COTE_CARREAU, BufferedImage.TYPE_INT_ARGB)
@@ -66,8 +66,8 @@ public class Board extends JPanel {
                 square.setIcon(icon);
                 square.setBackground(Color.BLACK);
 
-                BoardSquares[i][j] = square;
-                this.add(BoardSquares[i][j]);
+                boardSquares[i][j] = square;
+                this.add(boardSquares[i][j]);
 
             }
         }
