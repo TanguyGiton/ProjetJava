@@ -41,22 +41,20 @@ public class Board extends JPanel {
         this.setLayout(new GridLayout(NB_LIN, NB_COL));
         this.setBorder(new LineBorder(Color.BLACK));
 
-        this.setVisible(true);
-
         /**
-         * Création des marges autour des carreaux
+         * Ajouter les marges autour des carreaux
          */
         Insets buttonMargin = new Insets(MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU);
 
         /**
-         * Créer l'icon des carreaux qui seront affichés sur Tetris
+         * Créer l'icone des carreaux qui seront affichés sur Tetris
          */
         ImageIcon icon = new ImageIcon(
                 new BufferedImage(COTE_CARREAU, COTE_CARREAU, BufferedImage.TYPE_INT_ARGB)
         );
 
         /**
-         * Création du carré.
+         * Créer les carreaux
          */
         for (int i = 0; i < NB_LIN; i++) {
             for (int j = 0; j < NB_COL; j++) {
@@ -71,9 +69,13 @@ public class Board extends JPanel {
 
                 boardSquares[i][j] = square;
                 this.add(boardSquares[i][j]);
-
             }
         }
+
+        /**
+         * Afficher
+         */
+        this.setVisible(true);
 
     }
 

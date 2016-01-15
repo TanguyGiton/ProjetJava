@@ -30,7 +30,6 @@ public class Tetris extends JFrame {
      */
     public Tetris() {
 
-
         /**
          * Paramétrer la fenêtre du Tetris
          */
@@ -51,8 +50,8 @@ public class Tetris extends JFrame {
         /**
          * Création et implémentation du SideBoard (JPanel) dans le Tetris (JFrame)
          */
-        this.getContentPane().add(new JButton("SideBoard"), BorderLayout.EAST);
-        // TODO: Ajouter vraiment le SideBoard
+        this.sideBoard = new SideBoard();
+        this.getContentPane().add(this.sideBoard, BorderLayout.EAST);
 
 
         /**
@@ -63,8 +62,9 @@ public class Tetris extends JFrame {
         this.setVisible(true);
 
         /**
-         * Lancer le jeu
+         * Lancer
          */
+
         this.run();
     }
 
