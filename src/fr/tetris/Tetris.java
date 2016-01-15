@@ -4,6 +4,8 @@ import fr.tetris.piece.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 
@@ -46,13 +48,25 @@ public class Tetris extends JFrame {
          * Création et implémentation du Board (JPanel) dans le Tetris (JFrame)
          */
         this.board = new Board();
-        this.getContentPane().add(this.board, BorderLayout.CENTER);
+        this.add(this.board, BorderLayout.CENTER);
 
         /**
          * Création et implémentation du SideBar (JPanel) dans le Tetris (JFrame)
          */
         this.sideBar = new SideBar();
-        this.getContentPane().add(this.sideBar, BorderLayout.EAST);
+        this.add(this.sideBar, BorderLayout.EAST);
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP:
+                        currentPiece.rotate();
+                        updatePrint();
+                        break;
+                }
+            }
+        });
 
 
         /**
@@ -75,6 +89,7 @@ public class Tetris extends JFrame {
     private void run() {
         this.currentPiece = randomPiece();
         this.updatePrint();
+
     }
 
     /**
@@ -110,6 +125,6 @@ public class Tetris extends JFrame {
      */
     private void updatePrint() {
         this.board.print(this.currentPiece);
+        this.board.repaint();
     }
-
 }

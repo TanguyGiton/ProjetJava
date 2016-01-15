@@ -13,7 +13,7 @@ public class SideBar extends JPanel {
      */
     public SideBar() {
         this.setBackground(Color.blue);
-        this.add(new JButton("SideBar"));
+        //this.add(new JButton("SideBar")); Fais buguer le key listener
         this.setVisible(true);
     }
 

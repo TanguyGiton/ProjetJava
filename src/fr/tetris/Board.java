@@ -31,6 +31,11 @@ public class Board extends JPanel {
     public static final int MARGE_CARREAU = 1;
 
     /**
+     * La couleur par défaut des carreaux
+     */
+    public static final Color DEFAULT_COLOR = Color.black;
+
+    /**
      * La matrice qui contient les boutons (pour afficher les cases de notre Tetris).
      */
     public JButton[][] boardSquares = new JButton[NB_LIN][NB_COL];
@@ -41,7 +46,7 @@ public class Board extends JPanel {
      */
     public Board() {
         this.setLayout(new GridLayout(NB_LIN, NB_COL));
-        this.setBorder(new LineBorder(Color.BLACK));
+        this.setBorder(new LineBorder(DEFAULT_COLOR));
 
         /**
          * Ajouter les marges autour des carreaux
@@ -79,7 +84,23 @@ public class Board extends JPanel {
 
     }
 
+    public void reinit() {
+        for (int lin = 0; lin < NB_LIN; lin++) {
+            for (int col = 0; col < NB_COL; col++) {
+                boardSquares[lin][col].setBackground(DEFAULT_COLOR);
+            }
+        }
+    }
+
+    /**
+     * Affiche le board
+     *
+     * @param currentPiece La pièce courante
+     */
     public void print(Piece currentPiece) {
+
+        this.reinit();
+
         for (int lin = currentPiece.getLin(); lin < currentPiece.getNbLin(); lin++) {
             for (int col = currentPiece.getCol(); col < currentPiece.getNbCol(); col++) {
                 if (currentPiece.isASquare(lin, col)) {
