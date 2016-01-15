@@ -66,7 +66,13 @@ public class Tetris extends JFrame {
                     case KeyEvent.VK_Z:
                     case KeyEvent.VK_UP:
                         currentPiece.rotate();
-                        updatePrint();
+                        if (board.verifCollision(currentPiece)) {
+                            currentPiece.rotate();
+                            currentPiece.rotate();
+                            currentPiece.rotate();
+                        } else {
+                            updatePrint();
+                        }
                         break;
 
                     /**
@@ -75,7 +81,11 @@ public class Tetris extends JFrame {
                     case KeyEvent.VK_Q:
                     case KeyEvent.VK_LEFT:
                         currentPiece.moveLeft();
-                        updatePrint();
+                        if (board.verifCollision(currentPiece)) {
+                            currentPiece.moveRight();
+                        } else {
+                            updatePrint();
+                        }
                         break;
 
                     /**
@@ -84,7 +94,11 @@ public class Tetris extends JFrame {
                     case KeyEvent.VK_D:
                     case KeyEvent.VK_RIGHT:
                         currentPiece.moveRight();
-                        updatePrint();
+                        if (board.verifCollision(currentPiece)) {
+                            currentPiece.moveLeft();
+                        } else {
+                            updatePrint();
+                        }
                         break;
 
                 }

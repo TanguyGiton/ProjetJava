@@ -110,4 +110,14 @@ public class Board extends JPanel {
         }
     }
 
+    /**
+     * Vérifier que la piece peut être déplacer à ces coordonnées
+     *
+     * @param piece la pièce à vérifier
+     * @return Vrai si il y a collision, Faux sinon
+     */
+    public boolean verifCollision(Piece piece) {
+        return piece.getLin() < 0 || piece.getCol() < 0 || piece.getLin() + piece.getNbLin() > NB_LIN || piece.getCol() + piece.getNbCol() > NB_COL;
+    }
+
 }
