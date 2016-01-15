@@ -1,9 +1,10 @@
 package fr.tetris;
 
-import fr.tetris.piece.Piece;
+import fr.tetris.piece.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 
 public class Tetris extends JFrame {
@@ -68,8 +69,47 @@ public class Tetris extends JFrame {
         this.run();
     }
 
+    /**
+     * Lancer le jeu
+     */
     private void run() {
-        // TODO: Lancer le jeu
+        this.currentPiece = randomPiece();
+        this.updatePrint();
+    }
+
+    /**
+     * Donne une pièce aléatoire
+     *
+     * @return une pièce
+     */
+    private Piece randomPiece() {
+        Random random = new Random();
+
+        switch (random.nextInt(7)) {
+            case 0:
+                return new PieceI();
+            case 1:
+                return new PieceJ();
+            case 2:
+                return new PieceL();
+            case 3:
+                return new PieceO();
+            case 4:
+                return new PieceS();
+            case 5:
+                return new PieceT();
+            case 6:
+                return new PieceZ();
+        }
+
+        return null;
+    }
+
+    /**
+     * Mise à jour de l'affichage
+     */
+    private void updatePrint() {
+        this.board.print(this.currentPiece);
     }
 
 }

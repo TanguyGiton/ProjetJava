@@ -1,5 +1,7 @@
 package fr.tetris;
 
+import fr.tetris.piece.Piece;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -75,6 +77,16 @@ public class Board extends JPanel {
          */
         this.setVisible(true);
 
+    }
+
+    public void print(Piece currentPiece) {
+        for (int lin = currentPiece.getLin(); lin < currentPiece.getNbLin(); lin++) {
+            for (int col = currentPiece.getCol(); col < currentPiece.getNbCol(); col++) {
+                if (currentPiece.isASquare(lin, col)) {
+                    boardSquares[lin][col].setBackground(currentPiece.getColor());
+                }
+            }
+        }
     }
 
 }

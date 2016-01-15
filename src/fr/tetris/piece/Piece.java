@@ -91,6 +91,17 @@ public abstract class Piece {
     }
 
     /**
+     * Vérifie si aux coordonnées du board, il y a un carreau
+     *
+     * @param lin la ligne du board à vérifier
+     * @param col la colonne du board à vérifier
+     * @return Vrai si il y a un carreau, Faux sinon
+     */
+    public boolean isASquare(int lin, int col) {
+        return lin >= this.lin && col >= this.col && this.piece[lin - this.lin][col - this.col];
+    }
+
+    /**
      * La colonne sur laquelle la piece est positionnée
      *
      * @return La colonne
