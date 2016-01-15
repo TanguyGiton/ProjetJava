@@ -37,6 +37,16 @@ public class Tetris extends JFrame {
     private int speed = 800;
 
     /**
+     * Indiquer si le jeu est fini
+     */
+    private boolean gameOver;
+
+    /**
+     * Le score
+     */
+    private int score;
+
+    /**
      * Le Constructeur du jeu Tetris
      *
      * On affiche la fenêtre du Tetris
@@ -189,7 +199,7 @@ public class Tetris extends JFrame {
      */
     private void loop() {
 
-        while (true) {
+        while (!this.isGameOver()) {
             run();
             this.speed--;
             try {
@@ -198,6 +208,8 @@ public class Tetris extends JFrame {
                 e.printStackTrace();
             }
         }
+
+        // TODO: Afficher un message de Game Over
     }
 
     /**
@@ -206,7 +218,9 @@ public class Tetris extends JFrame {
     private void initGame() {
         this.currentPiece = randomPiece();
         this.nextPiece = randomPiece();
+        this.setGameOver(false);
         this.updatePrint();
+        this.score = 0;
 
         this.loop();
     }
@@ -216,8 +230,45 @@ public class Tetris extends JFrame {
      */
     private void changePiece() {
         this.board.addPiece(this.currentPiece);
+        switch (this.board.fullLines()) {
+            case 1:
+                this.score += 50;
+                break;
+            case 2:
+                this.score += 100;
+                break;
+            case 3:
+                this.score += 200;
+                break;
+            case 4:
+                this.score += 400;
+                break;
+        }
+        // TODO: Afficher le score dans la SideBar
         this.currentPiece = this.nextPiece;
-        this.nextPiece = this.randomPiece();
-        this.board.fullLines();
+        if (this.board.verifCollision(this.currentPiece)) {
+            setGameOver(true);
+        } else {
+            this.nextPiece = this.randomPiece();
+            // TODO: Afficher la prochaine pièce dans la SideBar
+        }
+    }
+
+    /**
+     * Indique si la partie est finie
+     *
+     * @return Vrai si la partie est finie, Faux sinon
+     */
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    /**
+     * Définir la fin de la partie
+     *
+     * @param gameOver Vrai si la partie est finie, Faux sinon
+     */
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }

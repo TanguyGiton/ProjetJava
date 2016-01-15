@@ -192,10 +192,13 @@ public class Board extends JPanel {
 
     /**
      * Détecter les lignes pleines
+     *
+     * @return Retourne le nombre de ligne supprimé
      */
-    public void fullLines() {
+    public int fullLines() {
         boolean flag;
         int col;
+        int nbDeleteLin = 0;
         for (int lin = 0; lin < NB_LIN; lin++) {
             flag = true;
             col = 0;
@@ -208,8 +211,10 @@ public class Board extends JPanel {
 
             if (flag) {
                 supprLine(lin);
+                nbDeleteLin++;
             }
         }
+        return nbDeleteLin;
     }
 
     /**
