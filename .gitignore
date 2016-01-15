@@ -9,3 +9,4 @@
 
 # IntelliJ
 /out/
+!/out/artifacts/ProjetJava_jar/ProjetJava_jar.jar
