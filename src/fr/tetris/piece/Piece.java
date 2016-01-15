@@ -1,11 +1,15 @@
 package fr.tetris.piece;
 
+import fr.tetris.Tetris;
+
 import java.awt.*;
 
 /**
  * Classe abstraite de laquelle toutes les pièces héritent.
  */
 public abstract class Piece {
+
+    protected Tetris tetris;
 
     /**
      * La ligne sur laquelle la pièce est positionnée
@@ -88,6 +92,10 @@ public abstract class Piece {
         }
 
         this.setPiece(temp);
+
+        if (this.col + this.nbCol > fr.tetris.Board.NB_COL) {
+            this.col = fr.tetris.Board.NB_COL - this.nbCol;
+        }
     }
 
     /**
