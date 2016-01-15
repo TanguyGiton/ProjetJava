@@ -26,39 +26,50 @@ public class Tetris extends JFrame {
     /**
      * Le Constructeur du jeu Tetris
      *
+     * On affiche la fenêtre du Tetris
      */
     public Tetris() {
 
 
-        // JFrame Config (Visible, size, screen positioning)
+        /**
+         * Paramétrer la fenêtre du Tetris
+         */
         this.setTitle("Tetris");
         this.getContentPane().setBackground( Color.BLACK);
         this.setLayout(new BorderLayout());
 
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         /**
-         * Creation du Board (JPanel) dans le Tetris (JFrame)
+         * Création et implémentation du Board (JPanel) dans le Tetris (JFrame)
          */
         this.board = new Board();
         this.getContentPane().add(this.board, BorderLayout.CENTER);
 
         /**
-         * Creation du SideBoard (JPanel) dans le Tetris (JFrame)
+         * Création et implémentation du SideBoard (JPanel) dans le Tetris (JFrame)
          */
         this.getContentPane().add(new JButton("SideBoard"), BorderLayout.EAST);
         // TODO: Ajouter vraiment le SideBoard
 
-        /**
-         * On affiche le Tetris
-         */
 
+        /**
+         * Afficher le Tetris
+         */
         this.pack();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
 
+        /**
+         * Lancer le jeu
+         */
+        this.run();
+    }
+
+    private void run() {
+        // TODO: Lancer le jeu
     }
 
 }

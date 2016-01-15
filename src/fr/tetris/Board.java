@@ -49,7 +49,7 @@ public class Board extends JPanel {
         Insets buttonMargin = new Insets(MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU);
 
         /**
-         * Créer l'icon du Tetris: les carreaux qui seront affichés sur Tetris
+         * Créer l'icon des carreaux qui seront affichés sur Tetris
          */
         ImageIcon icon = new ImageIcon(
                 new BufferedImage(COTE_CARREAU, COTE_CARREAU, BufferedImage.TYPE_INT_ARGB)
