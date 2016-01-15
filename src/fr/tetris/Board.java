@@ -19,6 +19,16 @@ public class Board extends JPanel {
     public static final int NB_COL = 12;
 
     /**
+     * La taille en pixel du côté d'un carreau
+     */
+    public static final int COTE_CARREAU = 20;
+
+    /**
+     * La marge des carreaux
+     */
+    public static final int MARGE_CARREAU = 1;
+
+    /**
      * La matrice qui contient les boutons (pour afficher les cases de notre Tetris).
      */
     public JButton[][] BoardSquares = new JButton[NB_LIN][NB_COL];
@@ -34,32 +44,29 @@ public class Board extends JPanel {
         this.setVisible(true);
 
         /**
-         * Création des contours des carrés
+         * Création des marges autour des carreaux
          */
-        Insets buttonMargin = new Insets(1, 1, 1, 1);
+        Insets buttonMargin = new Insets(MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU, MARGE_CARREAU);
+
+        /**
+         * Créer l'icon du Tetris: les carreaux qui seront affichés sur Tetris
+         */
+        ImageIcon icon = new ImageIcon(
+                new BufferedImage(COTE_CARREAU, COTE_CARREAU, BufferedImage.TYPE_INT_ARGB)
+        );
 
         /**
          * Création du carré.
          */
         for (int i = 0; i < NB_LIN; i++) {
             for (int j = 0; j < NB_COL; j++) {
-                JButton Square = new JButton();
-                /**
-                 * Mise en place de la Marge
-                 */
-                Square.setMargin(buttonMargin);
+                JButton square = new JButton();
 
-                /**
-                 * Créer l'icon du Tetris: les carré qui seront affiché sur Tetris
-                 */
+                square.setMargin(buttonMargin);
+                square.setIcon(icon);
+                square.setBackground(Color.BLACK);
 
-                ImageIcon icon = new ImageIcon(
-                        new BufferedImage(20, 20, BufferedImage.TYPE_INT_ARGB)
-                );
-                Square.setIcon(icon);
-                Square.setBackground(Color.BLACK);
-
-                BoardSquares[i][j] = Square;
+                BoardSquares[i][j] = square;
                 this.add(BoardSquares[i][j]);
 
             }
