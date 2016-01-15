@@ -1,5 +1,7 @@
 package fr.tetris;
 
+import fr.tetris.piece.Piece;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,40 +13,55 @@ public class SideBar extends JPanel {
 
 
     /**
-     * La tabulation utilisé pour les Titres
+     * La largeur de la SideBar
      */
-    private static final int TAB_TITRES = 25;
+    private static final int WIDTH_PANEL = 150;
 
     /**
-     * La tabulation utilisé pour les Textes
+     * La position en X des titres
      */
-    private static final int TAB_TEXT = 10;
+    private static final int LEFT_TITLES = WIDTH_PANEL / 2;
 
     /**
-     * Le coordonné Y des Stats
+     * La position en X des textes
      */
-    private static final int COL_STATS = 210;
+    private static final int LEFT_TEXT = WIDTH_PANEL / 2;
 
     /**
-     * Le coordonné Y des controles
+     * La position en X de l'affichage de la pièce suivante
      */
-    private static final int COL_CONTROL = 420;
+    private static final int LEFT_NEXT_PIECE = WIDTH_PANEL / 2;
+
+    /**
+     * La position en Y du score
+     */
+    private static final int TOP_SCORE = 210;
+
+    /**
+     * La position en Y des contrôles
+     */
+    private static final int TOP_CONTROLS = 420;
+
+    /**
+     * La position en Y de la pièce suivante
+     */
+    private static final int TOP_NEXT = 50;
 
 
     /**
-     * Le nombre de pixel entre chaque entrée de ligne
+     * Le nombre de pixel entre chaque ligne
      */
-    private static final int ENTRE_LIN = 25;
+    private static final int INTER_LIN = 25;
 
     /**
-     * Le style d'écriture de format petit
+     * La police de texte
      */
-    private static final Font SMALL_FONT = new Font("Ubuntu", Font.PLAIN, 11);
+    private static final Font TEXT_FONT = new Font("Arial", Font.PLAIN, 11);
 
     /**
-     * Le style d'écriture de format grand
+     * La police des titres
      */
-    private static final Font LARGE_FONT = new Font("Ubuntu", Font.BOLD, 13);
+    private static final Font TITLES_FONT = new Font("Arial", Font.BOLD, 13);
 
     /**
      * La Couleur du texte
@@ -63,43 +80,54 @@ public class SideBar extends JPanel {
         this.tetris = tetris;
 
         this.setBackground(Color.black);
-        setPreferredSize(new Dimension(100, (Board.COTE_CARREAU + 2 * Board.MARGE_CARREAU) * Board.NB_LIN));
+        setPreferredSize(new Dimension(150, (Board.COTE_CARREAU + 2 * Board.MARGE_CARREAU) * Board.NB_LIN));
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Mettre la couleur
         g.setColor(FONT_COLOR);
 
-        int Coor_Temp;
-
+        int cursorTop;
 
         /**
          * Dessine la partie Score
          */
-        g.setFont(LARGE_FONT);
-        g.drawString("Score", TAB_TITRES, Coor_Temp = COL_STATS);
-        g.setFont(SMALL_FONT);
-        g.drawString("Score: " + tetris.getScore(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        g.setFont(TITLES_FONT);
+        g.drawString("SCORE", LEFT_TITLES - 20, cursorTop = TOP_SCORE);
+        g.setFont(TEXT_FONT);
+        g.drawString(tetris.getScore() + " points", LEFT_TEXT - 20, cursorTop += INTER_LIN);
 
         /**
          * Dessine la partie controles
          */
-        g.setFont(LARGE_FONT);
-        g.drawString("Controls", TAB_TITRES, Coor_Temp = COL_CONTROL);
-        g.setFont(SMALL_FONT);
-        g.drawString("Q/LEFT - Left", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-        g.drawString("D/RIGHT - Right", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-        g.drawString("Z/UP - Rotate", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-        g.drawString("S/DOWN - Drop", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+
+        g.setFont(TITLES_FONT);
+        g.drawString("CONTROLS", LEFT_TITLES - 35, cursorTop = TOP_CONTROLS);
+        g.setFont(TEXT_FONT);
+        g.drawString("Q or LEFT - Left", LEFT_TEXT - 40, cursorTop += INTER_LIN);
+        g.drawString("D or RIGHT - Right", LEFT_TEXT - 40, cursorTop += INTER_LIN);
+        g.drawString("Z or UP - Rotate", LEFT_TEXT - 40, cursorTop += INTER_LIN);
+        g.drawString("S or DOWN - Drop", LEFT_TEXT - 40, cursorTop += INTER_LIN);
 
 
         /**
          * Dessine l'emplacement de la pièce suivante
          */
+        g.setFont(TITLES_FONT);
+        g.drawString("NEXT", LEFT_TITLES - 18, TOP_NEXT);
 
+        Piece next = tetris.getNextPiece();
+
+        for (int lin = 0; lin < next.getNbLin(); lin++) {
+            for (int col = 0; col < next.getNbCol(); col++) {
+                if (next.isASquare(lin + next.getLin(), col + next.getCol())) {
+                    g.setColor(next.getColor());
+                    g.fillRect(lin * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbLin() / 2 * Board.COTE_CARREAU)), col * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
+                }
+            }
+        }
 
     }
 

@@ -281,4 +281,13 @@ public class Tetris extends JFrame {
     public int getScore() {
         return score;
     }
+
+    /**
+     * Donne la pièce suivante
+     *
+     * @return La pièce suivante
+     */
+    public Piece getNextPiece() {
+        return nextPiece;
+    }
 }
