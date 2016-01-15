@@ -1,11 +1,14 @@
 package fr.tetris;
 
+import javax.swing.*;
 
-public class SideBoard {
+/**
+ * Classe de la barre d'information affichée sur le côté du Tetris pour informer de la prochaine pièce, du score et des commandes.
+ */
+public class SideBoard extends JPanel {
 
     /**
-     * Le Constructeur de la bare sur le côté.
-     *
+     * Le constructeur de la barre d'information.
      */
     public SideBoard(){
 

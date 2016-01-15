@@ -1,7 +1,7 @@
 package fr.tetris;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
 
 
 public class Tetris extends JFrame {
@@ -26,7 +26,7 @@ public class Tetris extends JFrame {
 
         // JFrame Config (Visible, size, screen positioning)
         this.setTitle("Tetris");
-        this.setLayout(null);
+        this.setLayout(new BorderLayout());
 
 
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -37,9 +37,18 @@ public class Tetris extends JFrame {
         /**
          * Creation du Board (JPanel) dans le Tetris (JFrame)
          */
-        Board Board = new Board();
-        this.getContentPane().add(Board);
-        Board.setBounds(0,0,400,600);
+        Board board = new Board();
+        this.getContentPane().add(board, BorderLayout.CENTER);
+
+        /**
+         * Creation du SideBoard (JPanel) dans le Tetris (JFrame)
+         */
+        this.getContentPane().add(new JButton("SideBoard"), BorderLayout.EAST);
+        // TODO: Ajouter vraiment le SideBoard
+
+        /**
+         * On affiche le Tetris
+         */
 
         this.setVisible(true);
 
