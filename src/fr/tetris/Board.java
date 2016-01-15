@@ -93,7 +93,7 @@ public class Board extends JPanel {
     }
 
     /**
-     * Affiche le board
+     * Afficher le board
      *
      * @param currentPiece La pièce courante
      */
@@ -101,8 +101,8 @@ public class Board extends JPanel {
 
         this.reinit();
 
-        for (int lin = currentPiece.getLin(); lin < currentPiece.getNbLin(); lin++) {
-            for (int col = currentPiece.getCol(); col < currentPiece.getNbCol(); col++) {
+        for (int lin = currentPiece.getLin(); lin < currentPiece.getLin() + currentPiece.getNbLin(); lin++) {
+            for (int col = currentPiece.getCol(); col < currentPiece.getCol() + currentPiece.getNbCol(); col++) {
                 if (currentPiece.isASquare(lin, col)) {
                     boardSquares[lin][col].setBackground(currentPiece.getColor());
                 }

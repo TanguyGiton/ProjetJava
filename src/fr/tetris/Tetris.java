@@ -60,10 +60,33 @@ public class Tetris extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
+                    /**
+                     * Flèche du haut ou Z : faire tourner la pièce
+                     */
+                    case KeyEvent.VK_Z:
                     case KeyEvent.VK_UP:
                         currentPiece.rotate();
                         updatePrint();
                         break;
+
+                    /**
+                     * Flèche de gauche ou Q: déplacement à gauche
+                     */
+                    case KeyEvent.VK_Q:
+                    case KeyEvent.VK_LEFT:
+                        currentPiece.moveLeft();
+                        updatePrint();
+                        break;
+
+                    /**
+                     * Flèche de droite ou D: déplacement à droite
+                     */
+                    case KeyEvent.VK_D:
+                    case KeyEvent.VK_RIGHT:
+                        currentPiece.moveRight();
+                        updatePrint();
+                        break;
+
                 }
             }
         });

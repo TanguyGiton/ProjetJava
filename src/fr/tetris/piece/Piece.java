@@ -102,6 +102,20 @@ public abstract class Piece {
     }
 
     /**
+     * Déplace la pièce à gauche
+     */
+    public void moveRight() {
+        this.col++;
+    }
+
+    /**
+     * Déplace la pièce à droite
+     */
+    public void moveLeft() {
+        this.col--;
+    }
+
+    /**
      * La colonne sur laquelle la piece est positionnée
      *
      * @return La colonne
