@@ -27,6 +27,11 @@ public class Tetris extends JFrame {
     private Piece currentPiece;
 
     /**
+     * La pièce suivant
+     */
+    private Piece nextPiece;
+
+    /**
      * Le Constructeur du jeu Tetris
      *
      * On affiche la fenêtre du Tetris
@@ -101,6 +106,11 @@ public class Tetris extends JFrame {
                         }
                         break;
 
+                    case KeyEvent.VK_S:
+                    case KeyEvent.VK_DOWN:
+                        run();
+                        break;
+
                 }
             }
         });
@@ -117,16 +127,20 @@ public class Tetris extends JFrame {
          * Lancer
          */
 
-        this.run();
+        this.initGame();
     }
 
     /**
      * Lancer le jeu
      */
     private void run() {
-        this.currentPiece = randomPiece();
-        this.updatePrint();
+        this.currentPiece.moveDown();
 
+        if (this.board.verifCollision(this.currentPiece)) {
+            this.currentPiece.cancelMoveDown();
+            this.changePiece();
+        }
+        this.updatePrint();
     }
 
     /**
@@ -163,5 +177,40 @@ public class Tetris extends JFrame {
     private void updatePrint() {
         this.board.print(this.currentPiece);
         this.board.repaint();
+    }
+
+    /**
+     * La boucle du jeu
+     */
+    private void loop() {
+
+        while (true) {
+            run();
+            try {
+                Thread.sleep(800);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Initialisation de la partie
+     */
+    private void initGame() {
+        this.currentPiece = randomPiece();
+        this.nextPiece = randomPiece();
+        this.updatePrint();
+
+        this.loop();
+    }
+
+    /**
+     * Change la pièce avec la suivant
+     */
+    private void changePiece() {
+        this.board.addPiece(this.currentPiece);
+        this.currentPiece = this.nextPiece;
+        this.nextPiece = this.randomPiece();
     }
 }

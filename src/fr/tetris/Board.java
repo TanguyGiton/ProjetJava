@@ -41,6 +41,11 @@ public class Board extends JPanel {
     public JButton[][] boardSquares = new JButton[NB_LIN][NB_COL];
 
     /**
+     * La matrice qui contient les carreaux
+     */
+    public Piece[][] boardPieces = new Piece[NB_LIN][NB_COL];
+
+    /**
      * Le constructeur de la grille
      * Défini le JPanel et l'affiche
      */
@@ -101,8 +106,24 @@ public class Board extends JPanel {
 
         this.reinit();
 
-        for (int lin = currentPiece.getLin(); lin < currentPiece.getLin() + currentPiece.getNbLin(); lin++) {
-            for (int col = currentPiece.getCol(); col < currentPiece.getCol() + currentPiece.getNbCol(); col++) {
+        int lin, col;
+
+        /**
+         * Affichage des carreaux
+         */
+        for (lin = 0; lin < NB_LIN; lin++) {
+            for (col = 0; col < NB_COL; col++) {
+                if (null != boardPieces[lin][col]) {
+                    boardSquares[lin][col].setBackground(boardPieces[lin][col].getColor());
+                }
+            }
+        }
+
+        /**
+         * Affichage de la pièce courante
+         */
+        for (lin = currentPiece.getLin(); lin < currentPiece.getLin() + currentPiece.getNbLin(); lin++) {
+            for (col = currentPiece.getCol(); col < currentPiece.getCol() + currentPiece.getNbCol(); col++) {
                 if (currentPiece.isASquare(lin, col)) {
                     boardSquares[lin][col].setBackground(currentPiece.getColor());
                 }
@@ -120,4 +141,18 @@ public class Board extends JPanel {
         return piece.getLin() < 0 || piece.getCol() < 0 || piece.getLin() + piece.getNbLin() > NB_LIN || piece.getCol() + piece.getNbCol() > NB_COL;
     }
 
+    /**
+     * Ajouter une pièce dans le board
+     *
+     * @param piece la pièce à ajouter
+     */
+    public void addPiece(Piece piece) {
+        for (int lin = piece.getLin(); lin < piece.getLin() + piece.getNbLin(); lin++) {
+            for (int col = piece.getCol(); col < piece.getCol() + piece.getNbCol(); col++) {
+                if (piece.isASquare(lin, col)) {
+                    boardPieces[lin][col] = piece;
+                }
+            }
+        }
+    }
 }

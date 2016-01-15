@@ -110,17 +110,31 @@ public abstract class Piece {
     }
 
     /**
-     * Déplace la pièce à gauche
+     * Déplacer la pièce à gauche
      */
     public void moveRight() {
         this.col++;
     }
 
     /**
-     * Déplace la pièce à droite
+     * Déplacer la pièce à droite
      */
     public void moveLeft() {
         this.col--;
+    }
+
+    /**
+     * Déplacer la pièce vers le bas
+     */
+    public void moveDown() {
+        this.lin++;
+    }
+
+    /**
+     * Annuler le déplacement vers le bas, utilisé suite à une collision
+     */
+    public void cancelMoveDown() {
+        this.lin--;
     }
 
     /**
