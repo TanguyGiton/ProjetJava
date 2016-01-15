@@ -9,12 +9,12 @@ public class Main {
     /**
      * La méthode qui est lancée en première
      *
-     * @param args
+     *
      */
     public static void main(String[] args) {
 
         Tetris Tetris = new Tetris();
-        Board Board = new Board();
+        //Board Board = new Board();
 
 
     } 
