@@ -32,6 +32,11 @@ public class Tetris extends JFrame {
     private Piece nextPiece;
 
     /**
+     * La vitesse du jeu
+     */
+    private int speed = 800;
+
+    /**
      * Le Constructeur du jeu Tetris
      *
      * On affiche la fenêtre du Tetris
@@ -186,8 +191,9 @@ public class Tetris extends JFrame {
 
         while (true) {
             run();
+            this.speed--;
             try {
-                Thread.sleep(800);
+                Thread.sleep(this.speed);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -212,5 +218,6 @@ public class Tetris extends JFrame {
         this.board.addPiece(this.currentPiece);
         this.currentPiece = this.nextPiece;
         this.nextPiece = this.randomPiece();
+        this.board.fullLines();
     }
 }

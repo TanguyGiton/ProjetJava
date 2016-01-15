@@ -20,8 +20,8 @@ public class PieceJ extends Piece {
         super();
 
         this.setPiece(new boolean[][]{
-                {true, false, false, false},
-                {true, true, true, true}
+                {true, false, false},
+                {true, true, true}
         });
 
         this.setColor(new Color(255, 122, 4));

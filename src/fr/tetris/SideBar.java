@@ -1,9 +1,7 @@
 package fr.tetris;
 
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 
 
 /**
@@ -20,7 +18,7 @@ public class SideBar extends JPanel {
     /**
      * La tabulation utilisé pour les Textes
      */
-     private static final int TAB_TEXT = 10;
+    private static final int TAB_TEXT = 10;
 
     /**
      * Le coordonné Y des Stats
@@ -63,41 +61,41 @@ public class SideBar extends JPanel {
         this.setVisible(true);
     }
 
-        //@Override
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
-            // Mettre la couleur
-            g.setColor(DRAW_COLOR);
+        // Mettre la couleur
+        g.setColor(DRAW_COLOR);
 
-		/*
-		 * Une variable utilisé pour stocker les coordonnée temporairement.
-		 * On pourra ré-ordonner, bouger et/ou ajouter/supprimer si besoin
-	    */
-            int Coor_Temp;
+        /**
+         * Une variable utilisé pour stocker les coordonnée temporairement.
+         * On pourra ré-ordonner, bouger et/ou ajouter/supprimer si besoin
+         */
+        int Coor_Temp;
 
 
-		/*
-		 * Dessine la partie Stat
-		 */
-            g.setFont(LARGE_FONT);
-            g.drawString("Stats", TAB_TITRES, Coor_Temp = COL_STATS);
-            g.setFont(SMALL_FONT);
-            // :TODO getScore() et l'écrire dans SideBar
-           // g.drawString("Level: " + Tetris.getLevel(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
-           // g.drawString("Score: " + Tetris.getScore(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        /**
+         * Dessine la partie Stat
+         */
+        g.setFont(LARGE_FONT);
+        g.drawString("Stats", TAB_TITRES, Coor_Temp = COL_STATS);
+        g.setFont(SMALL_FONT);
+        // :TODO getScore() et l'écrire dans SideBar
+        // g.drawString("Level: " + Tetris.getLevel(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        // g.drawString("Score: " + Tetris.getScore(), TAB_TEXT, Coor_Temp += ENTRE_LIN);
 
-		/*
-		 * Dessine la partie controle
-		 */
-            g.setFont(LARGE_FONT);
-            g.drawString("Controls", TAB_TITRES, Coor_Temp = COL_CONTROL);
-            g.setFont(SMALL_FONT);
-            g.drawString("Q/LEFT - Left", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-            g.drawString("D/RIGHT - Right", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-            g.drawString("Z/UP - Rotate", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-            g.drawString("S/DOWN - Drop", TAB_TEXT, Coor_Temp += ENTRE_LIN);
-            g.drawString("P - Pause Game", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        /**
+         * Dessine la partie controle
+         */
+        g.setFont(LARGE_FONT);
+        g.drawString("Controls", TAB_TITRES, Coor_Temp = COL_CONTROL);
+        g.setFont(SMALL_FONT);
+        g.drawString("Q/LEFT - Left", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        g.drawString("D/RIGHT - Right", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        g.drawString("Z/UP - Rotate", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        g.drawString("S/DOWN - Drop", TAB_TEXT, Coor_Temp += ENTRE_LIN);
+        g.drawString("P - Pause Game", TAB_TEXT, Coor_Temp += ENTRE_LIN);
 
     }
 

@@ -138,7 +138,17 @@ public class Board extends JPanel {
      * @return Vrai si il y a collision, Faux sinon
      */
     public boolean verifCollision(Piece piece) {
-        return piece.getLin() < 0 || piece.getCol() < 0 || piece.getLin() + piece.getNbLin() > NB_LIN || piece.getCol() + piece.getNbCol() > NB_COL;
+        if (piece.getLin() < 0 || piece.getCol() < 0 || piece.getLin() + piece.getNbLin() > NB_LIN || piece.getCol() + piece.getNbCol() > NB_COL) {
+            return true;
+        }
+        for (int lin = piece.getLin(); lin < piece.getLin() + piece.getNbLin(); lin++) {
+            for (int col = piece.getCol(); col < piece.getCol() + piece.getNbCol(); col++) {
+                if (piece.isASquare(lin, col) && null != boardPieces[lin][col]) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -152,6 +162,41 @@ public class Board extends JPanel {
                 if (piece.isASquare(lin, col)) {
                     boardPieces[lin][col] = piece;
                 }
+            }
+        }
+    }
+
+    /**
+     * Détecter les lignes pleines
+     */
+    public void fullLines() {
+        boolean flag;
+        int col;
+        for (int lin = 0; lin < NB_LIN; lin++) {
+            flag = true;
+            col = 0;
+            while (flag && col < NB_COL) {
+                if (null == boardPieces[lin][col]) {
+                    flag = false;
+                }
+                col++;
+            }
+
+            if (flag) {
+                supprLine(lin);
+            }
+        }
+    }
+
+    /**
+     * Supprimer une ligne
+     *
+     * @param lin la ligne à supprimer
+     */
+    public void supprLine(int lin) {
+        for (int l = lin; l > 0; l--) {
+            for (int c = 0; c < NB_COL; c++) {
+                boardPieces[l][c] = boardPieces[l - 1][c];
             }
         }
     }
