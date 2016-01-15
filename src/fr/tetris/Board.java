@@ -52,6 +52,7 @@ public class Board extends JPanel {
     public Board() {
         this.setLayout(new GridLayout(NB_LIN, NB_COL));
         this.setBorder(new LineBorder(DEFAULT_COLOR));
+        this.setBackground(DEFAULT_COLOR);
 
         /**
          * Ajouter les marges autour des carreaux
@@ -120,6 +121,28 @@ public class Board extends JPanel {
         }
 
         /**
+         * Affichage de l'ombre de la pièce courante
+         */
+
+        int memLin = currentPiece.getLin();
+        int memCol = currentPiece.getCol();
+
+        while (!verifCollision(currentPiece)) {
+            currentPiece.moveDown();
+        }
+        currentPiece.cancelMoveDown();
+
+        for (lin = currentPiece.getLin(); lin < currentPiece.getLin() + currentPiece.getNbLin(); lin++) {
+            for (col = currentPiece.getCol(); col < currentPiece.getCol() + currentPiece.getNbCol(); col++) {
+                if (currentPiece.isASquare(lin, col)) {
+                    boardSquares[lin][col].setBackground(new Color(currentPiece.getColor().getRed(), currentPiece.getColor().getGreen(), currentPiece.getColor().getBlue(), 70));
+                }
+            }
+        }
+
+        currentPiece.setPosition(memLin, memCol);
+
+        /**
          * Affichage de la pièce courante
          */
         for (lin = currentPiece.getLin(); lin < currentPiece.getLin() + currentPiece.getNbLin(); lin++) {
@@ -129,6 +152,7 @@ public class Board extends JPanel {
                 }
             }
         }
+
     }
 
     /**
