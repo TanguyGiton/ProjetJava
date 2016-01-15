@@ -28,10 +28,10 @@ public class Board extends JPanel {
      * Défini le JPanel et l'affiche
      */
     public Board() {
-        this.setLayout(new GridLayout(0, 12));
-        //this.setSize(300, 00);
-        this.setVisible(true);
+        this.setLayout(new GridLayout(NB_LIN, NB_COL));
         this.setBorder(new LineBorder(Color.BLACK));
+
+        this.setVisible(true);
 
         /**
          * Création des contours des carrés
@@ -41,8 +41,6 @@ public class Board extends JPanel {
         /**
          * Création du carré.
          */
-
-
         for (int i = 0; i < NB_LIN; i++) {
             for (int j = 0; j < NB_COL; j++) {
                 JButton Square = new JButton();

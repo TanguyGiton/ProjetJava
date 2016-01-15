@@ -1,5 +1,7 @@
 package fr.tetris;
 
+import fr.tetris.piece.Piece;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,6 +18,20 @@ public class Tetris extends JFrame {
      */
     public static final int FRAME_HEIGHT = 800;
 
+    /**
+     * Le JPanel Board
+     */
+    private Board board;
+
+    /**
+     * Le Jpanel SideBoard
+     */
+    private SideBoard sideBoard;
+
+    /**
+     * La pièce en cours
+     */
+    private Piece currentPiece;
 
     /**
      * Le Constructeur du jeu Tetris
@@ -31,14 +47,15 @@ public class Tetris extends JFrame {
 
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         /**
          * Creation du Board (JPanel) dans le Tetris (JFrame)
          */
-        Board board = new Board();
-        this.getContentPane().add(board, BorderLayout.CENTER);
+        this.board = new Board();
+        this.getContentPane().add(this.board, BorderLayout.CENTER);
 
         /**
          * Creation du SideBoard (JPanel) dans le Tetris (JFrame)
@@ -50,6 +67,7 @@ public class Tetris extends JFrame {
          * On affiche le Tetris
          */
 
+        this.pack();
         this.setVisible(true);
 
     }
