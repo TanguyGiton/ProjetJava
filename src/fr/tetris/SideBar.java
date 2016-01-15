@@ -99,6 +99,7 @@ public class SideBar extends JPanel {
         g.setFont(TEXT_FONT);
         g.drawString(tetris.getScore() + " points", LEFT_TEXT - 20, cursorTop += INTER_LIN);
 
+
         /**
          * Dessine la partie controles
          */
@@ -116,16 +117,23 @@ public class SideBar extends JPanel {
         /**
          * Dessine l'emplacement de la pièce suivante
          */
-        g.setFont(TITLES_FONT);
-        g.drawString("NEXT", LEFT_TITLES - 18, TOP_NEXT);
 
-        Piece next = tetris.getNextPiece();
+        if (tetris.isGameOver()) {
+            g.setFont(TITLES_FONT);
+            g.drawString("GAME OVER", 35, cursorTop = TOP_NEXT);
+            g.drawString("ENTER TO CONTINUE", 10, cursorTop += INTER_LIN * 2);
+        } else {
+            g.setFont(TITLES_FONT);
+            g.drawString("NEXT", LEFT_TITLES - 18, TOP_NEXT);
 
-        for (int lin = 0; lin < next.getNbLin(); lin++) {
-            for (int col = 0; col < next.getNbCol(); col++) {
-                if (next.isASquare(lin + next.getLin(), col + next.getCol())) {
-                    g.setColor(next.getColor());
-                    g.fillRect(col * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbCol() * Board.COTE_CARREAU / 2)), lin * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
+            Piece next = tetris.getNextPiece();
+
+            for (int lin = 0; lin < next.getNbLin(); lin++) {
+                for (int col = 0; col < next.getNbCol(); col++) {
+                    if (next.isASquare(lin + next.getLin(), col + next.getCol())) {
+                        g.setColor(next.getColor());
+                        g.fillRect(col * Board.COTE_CARREAU + (LEFT_NEXT_PIECE - (next.getNbCol() * Board.COTE_CARREAU / 2)), lin * Board.COTE_CARREAU + TOP_NEXT + 20, Board.COTE_CARREAU, Board.COTE_CARREAU);
+                    }
                 }
             }
         }
